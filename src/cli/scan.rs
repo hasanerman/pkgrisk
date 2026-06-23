@@ -8,7 +8,7 @@ use serde_json::Value;
 
 #[derive(Parser, Debug)]
 pub struct ScanArgs {
-    /// fail if any package has a score below this threshold
+    /// fail when any package has a score below this threshold
     #[arg(long)]
     pub fail_under: Option<u8>,
 
