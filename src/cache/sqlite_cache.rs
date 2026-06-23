@@ -35,7 +35,6 @@ impl SqliteCache {
                 let value: String = row.get(0)?;
                 return Ok(Some(value));
             } else {
-                // Expired, delete it
                 self.conn.execute("DELETE FROM cache WHERE key = ?1", params![key])?;
             }
         }

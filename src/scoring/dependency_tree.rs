@@ -1,6 +1,6 @@
 pub fn calculate(known_vulns: usize, dependencies_count: usize) -> u8 {
     if known_vulns > 0 {
-        return 0; // Immediate failure if vulnerabilities found
+        return 0;
     }
     
     if dependencies_count > 50 {

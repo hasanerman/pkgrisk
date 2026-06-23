@@ -22,7 +22,7 @@ pub async fn run(args: CheckArgs) -> anyhow::Result<()> {
 
     let ecosystem = match args.ecosystem {
         Some(e) => Ecosystem::from_str(&e).unwrap_or(Ecosystem::Npm),
-        None => Ecosystem::Npm, // Defaulting to npm for simplicity if not specified
+        None => Ecosystem::Npm,
     };
 
     let metadata = match ecosystem {
@@ -38,7 +38,7 @@ pub async fn run(args: CheckArgs) -> anyhow::Result<()> {
     let c_score = scoring::community::calculate(&metadata);
     let (l_score, l_details) = scoring::license::calculate(&metadata, &cfg.license);
     let d_score = scoring::dependency_tree::calculate(vulns, metadata.dependencies.len());
-    let a_score = 80; // Placeholder adoption score
+    let a_score = 80;
 
     let total = scoring::calculate_total_score(m_score, b_score, c_score, a_score, l_score, d_score);
 

@@ -60,7 +60,6 @@ impl Default for Config {
 }
 
 pub fn load_config() -> anyhow::Result<Config> {
-    // Try to load from ~/.config/pkgrisk/config.toml or .pkgriskrc.toml
     let mut config_paths = vec![PathBuf::from(".pkgriskrc.toml")];
     if let Some(home) = dirs::home_dir() {
         config_paths.push(home.join(".config").join("pkgrisk").join("config.toml"));
@@ -74,6 +73,5 @@ pub fn load_config() -> anyhow::Result<Config> {
         }
     }
 
-    // Default config
     Ok(Config::default())
 }

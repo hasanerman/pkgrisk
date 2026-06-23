@@ -29,7 +29,6 @@ pub async fn run(args: ScanArgs) -> anyhow::Result<()> {
 
     let fail_threshold = args.fail_under.unwrap_or(cfg.thresholds.fail_under);
 
-    // Scan package.json
     if let Ok(contents) = fs::read_to_string("package.json") {
         if let Ok(json) = serde_json::from_str::<Value>(&contents) {
             let mut deps = Vec::new();
@@ -51,7 +50,6 @@ pub async fn run(args: ScanArgs) -> anyhow::Result<()> {
         }
     }
 
-    // Scan Cargo.toml
     if let Ok(contents) = fs::read_to_string("Cargo.toml") {
         if let Ok(toml_val) = toml::from_str::<toml::Value>(&contents) {
             let mut deps = Vec::new();

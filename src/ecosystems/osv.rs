@@ -2,7 +2,6 @@ use crate::http_client::HttpClient;
 use serde_json::Value;
 
 pub async fn check_vulnerabilities(_client: &HttpClient, package: &str, ecosystem: &str, version: &str) -> anyhow::Result<usize> {
-    // OSV.dev uses specific ecosystem names
     let osv_ecosystem = match ecosystem {
         "npm" => "npm",
         "pypi" => "PyPI",
@@ -19,9 +18,6 @@ pub async fn check_vulnerabilities(_client: &HttpClient, package: &str, ecosyste
         }
     });
 
-    // We can't cache POST requests easily with our current HttpClient design,
-    // so we'll just use a raw reqwest call or extend the client.
-    // For now, let's use a standard reqwest client.
     let reqwest_client = reqwest::Client::new();
     let res = reqwest_client.post(url).json(&body).send().await?;
     let data: Value = res.json().await?;

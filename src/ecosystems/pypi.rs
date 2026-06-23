@@ -13,7 +13,6 @@ pub async fn fetch_metadata(client: &HttpClient, package: &str) -> anyhow::Resul
     if let Some(reqs) = info["requires_dist"].as_array() {
         for req in reqs {
             if let Some(req_str) = req.as_str() {
-                // simple split for basic parsing
                 let name = req_str.split_whitespace().next().unwrap_or("").to_string();
                 if !name.is_empty() {
                     dependencies.push(name);
@@ -40,6 +39,6 @@ pub async fn fetch_metadata(client: &HttpClient, package: &str) -> anyhow::Resul
         repository_url: repo_url,
         latest_release_date,
         dependencies,
-        weekly_downloads: None, // PyPI doesn't expose downloads via this API easily
+        weekly_downloads: None,
     })
 }

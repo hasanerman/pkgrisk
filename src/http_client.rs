@@ -53,7 +53,6 @@ impl HttpClient {
         
         let parsed: T = serde_json::from_str(&text)?;
         
-        // Save to cache
         let _ = self.cache.set(url, &text);
 
         Ok(parsed)

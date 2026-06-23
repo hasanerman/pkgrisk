@@ -9,7 +9,6 @@ pub async fn fetch_metadata(client: &HttpClient, package: &str) -> anyhow::Resul
     let crate_info = &data["crate"];
     let version = crate_info["max_version"].as_str().unwrap_or("unknown").to_string();
     
-    // Dependencies require another API call
     let deps_url = format!("https://crates.io/api/v1/crates/{}/{}/dependencies", package, version);
     let deps_data: Value = client.get_json(&deps_url).await.unwrap_or(serde_json::json!({"dependencies": []}));
     
