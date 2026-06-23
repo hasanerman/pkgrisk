@@ -46,7 +46,7 @@ cargo install pkgrisk
 ### Build from Source
 
 ```bash
-git clone https://github.com/kers/pkgrisk.git
+git clone https://github.com/hasanerman/pkgrisk.git
 cd pkgrisk
 cargo build --release
 # Binary is located at ./target/release/pkgrisk
@@ -185,7 +185,7 @@ All external API calls route through the local SQLite cache to respect rate limi
 ## Development
 
 ```bash
-git clone https://github.com/kers/pkgrisk.git
+git clone https://github.com/hasanerman/pkgrisk.git
 cd pkgrisk
 
 # Build the project
