@@ -8,15 +8,15 @@ use serde_json::Value;
 
 #[derive(Parser, Debug)]
 pub struct ScanArgs {
-    /// Fail if any package has a score below this threshold
+    /// fail if any package has a score below this threshold
     #[arg(long)]
     pub fail_under: Option<u8>,
 
-    /// Check only newly added dependencies
+    /// check only newly added dependencies
     #[arg(long)]
     pub diff_only: bool,
 
-    /// Output format (terminal, json, markdown)
+    /// output format (terminal, json, markdown)
     #[arg(short, long, default_value = "terminal")]
     pub format: String,
 }
